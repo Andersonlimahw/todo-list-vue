@@ -16,7 +16,11 @@
         
       </div>
     </li>
+    <div v-if="doneTodosCount > 0" class="done-todos">
+    completas: <span> {{doneTodosCount}} </span>
+    </div>
   </ul>
+  
 </template>
 
 <script>
@@ -33,6 +37,11 @@ export default {
           return 0
         }
       })
+    },
+    doneTodosCount () {
+      return this.$store.state.tasks.filter(
+        todo => todo.completed
+      ).length
     }
   },
   methods: {
@@ -150,6 +159,23 @@ export default {
 
 .todo-list li.editing:last-child {
   margin-bottom: -1px;
+}
+
+.done-todos {
+  position: fixed;
+  top:80px;
+  right: 10px;
+  background: #00897B;
+  color: #fff;
+  font-weight: 500;
+  width:10%;
+  height: auto;
+  padding:0.9em;
+  border-radius: 1.8em;
+  text-align: center;
+}
+.done-todos span {
+  font-weight: bold;
 }
 
 

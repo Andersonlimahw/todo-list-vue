@@ -3,7 +3,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-    tasks: []
+    tasks: [],
+    count: 0
   },
   mutations: {
     addTask (state, {task}) {
@@ -11,6 +12,14 @@ export default new Vuex.Store({
     },
     completeTask (state, {task}) {
       task.completed = !task.completed
+    },
+    increment (state) {
+      state.count++
+    }
+  },
+  actions: {
+    increment (context) {
+      context.commit('increment')
     }
   }
 })

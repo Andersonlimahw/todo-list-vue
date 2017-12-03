@@ -27,6 +27,7 @@ export default {
       let value = $event.target.value
       let task = this.createTask(value)
       this.$store.commit('addTask', { task })
+      this.$store.commit('increment')
       this.clearField($event)
     },
     createTask (value) {

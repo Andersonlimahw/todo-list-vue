@@ -16,7 +16,6 @@ import InputTask from './components/InputTask'
 import TaskList from './components/TaskList'
 import FooterTodo from './components/FooterTodo'
 
-
 export default {
   name: 'app',
   components: {
