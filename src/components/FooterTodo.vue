@@ -1,6 +1,6 @@
 <template>
-  <section class="footer-todo">
-    <p>Todo List MIT License | Anderson Lima</p>
+  <section class="footer-todo">   
+    <slot>ToDo List MIT License | Anderson Lima</slot>
   </section>
 </template>
 

@@ -46,6 +46,10 @@ export default {
 </script>
 
 <style>
+.todoapp {
+  width: 40%;
+  margin:150px auto;
+}
 .todoapp input::-webkit-input-placeholder {
   font-style: italic;
   font-weight: 300;
