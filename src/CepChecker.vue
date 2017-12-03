@@ -1,5 +1,5 @@
 <template>
-  <section class="cep-checker cep-checker">
+  <section class="cep-checker">
     <header class="header">
       <h2>Digite seu CEP</h2>
     </header>
@@ -52,13 +52,14 @@ export default {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
   0 25px 50px 0 rgba(0, 0, 0, 0.1);
   width:40%;
+  text-align: center;
 }
 
 .cep-checker h2 {
   position: absolute;
-  top: -30px;
+  top: -200px;
   width: 100%;
-  font-size: 50px;
+  font-size: 100px;
   font-weight: 100;
   text-align: center;
   color: rgba(0, 0, 0, 0.35);
@@ -80,15 +81,9 @@ export default {
   color: #e6e6e6;
 }
 
-
-.cep-checker{
-  /* margin: 20px 0; */
-  text-align: center;
-}
-
 .cep-checker input{
   position: relative;
-  margin: 60px auto 10px auto;
+  margin: 10px auto;
   width: 100%;
   font-size: 24px;
   font-family: inherit;

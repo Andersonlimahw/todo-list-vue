@@ -1,11 +1,11 @@
 <template>
-  <transition appear name="fade">
+  <div>
     <input 
       type="text" 
       class="new-todo" 
       placeholder="O que precisa ser feito?" 
       @keyup.enter="addTask">
-  </transition>
+  </div>
 </template>
 
 <script>
@@ -30,12 +30,12 @@ export default {
       task.title = value
       return task
     },
-    clearField () {
-      this.$el.querySelector('input').value = ''
-    },
     broadcast (task) {
       this.$emit('newTask', task)
-    }
+    },
+    clearField ($el) {
+      this.$el.querySelector('input').value = ''
+    },
   }
 }
 </script>
