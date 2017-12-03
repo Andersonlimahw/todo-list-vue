@@ -5,17 +5,18 @@ import App from './App'
 import VueRouter from 'vue-router'
 import routes from './routes'
 import VueResource from 'vue-resource'
+import VueEvents from './plugins/events'
 
 Vue.config.productionTip = false
 
-Vue.use(VueRouter)
+Vue.use(VueResource)
+Vue.use(VueEvents)
 
+Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes
 })
-
-Vue.use(VueResource)
 
 /* eslint-disable no-new */
 new Vue({
