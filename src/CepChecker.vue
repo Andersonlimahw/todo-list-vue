@@ -1,7 +1,13 @@
 <template>
   <section class="cepChecker">
     <label>Digite seu CEP</label>
-    <input type="text">
+    <input 
+      type="text"
+      @keyup.enter="checkCep"
+      > 
+      <br>
+      <small>pressione enter para pesquisar</small>
+      <br>
     <router-link class="home" to="/"> Ver Tarefas</router-link>
   </section>
 </template>
@@ -10,7 +16,19 @@
 export default {
   data () {
     return {
-
+      address: {}
+    }
+  },
+  methods: {
+    checkCep ($event) {
+      let cep = $event.target.value
+      this.$http.get('http://api.postmon.com.br/v1/cep/' + cep)
+      .then((res) => {
+        this.address = res.body
+        console.log('Response OK:', res)
+      }, (res) => {
+        console.error('Response error:', res)
+      })
     }
   }
 }
