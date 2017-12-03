@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 import VueResource from 'vue-resource'
 import VueEvents from './plugins/events'
+import store from './store/index'
 
 Vue.config.productionTip = false
 
@@ -21,6 +22,7 @@ const router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   template: `
     <div id="app">

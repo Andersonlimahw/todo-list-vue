@@ -1,12 +1,16 @@
 <template>
   <ul class="todo-list">
-    <li v-for="todo in sortedTasks" class="todo">
+    <li 
+      v-for="(todo, index) in sortedTasks" 
+      class="todo" 
+      :key="index">
       <div class="view">
         <input 
         class="toggle" 
         type="checkbox"
+        :checked="todo.completed"
         @click="completeTask(todo)">
-        <label :class="{'todo-completed': todo.completed}">
+        <label v-bind:class="{'todo-completed': todo.completed}">
            {{ todo.title }} 
         </label>
         
@@ -17,10 +21,9 @@
 
 <script>
 export default {
-  props: ['todoList'],
   computed: {
     sortedTasks: function () {
-      let sorted = this.todoList
+      let sorted = this.$store.state.tasks
       return sorted.sort(function (a, b) {
         if (a.title < b.title) {
           return -1
@@ -30,14 +33,11 @@ export default {
           return 0
         }
       })
-    },
-    set: function (novaLista) {
-      this.todoList.concat(novaLista)
     }
   },
   methods: {
     completeTask (task) {
-      task.completed = !task.completed
+      this.$store.commit('completeTask', { task })
     }
   }
 }

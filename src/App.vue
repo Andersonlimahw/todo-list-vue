@@ -4,8 +4,8 @@
       <h1>Tasks</h1>
     </header>
     <!-- input  to add task -->
-    <input-task @newTask="addTask"></input-task>
-    <task-list v-bind:todo-list="tasks" ></task-list>
+    <input-task></input-task>
+    <task-list></task-list>
     <router-link class="cep" to="/cep" >Verificar CEP</router-link>
     <footer-todo></footer-todo>
   </section>
@@ -14,14 +14,8 @@
 <script>
 import InputTask from './components/InputTask'
 import TaskList from './components/TaskList'
-import { Task } from './models/Task'
 import FooterTodo from './components/FooterTodo'
 
-let tasks = []
-let task = new Task()
-task.completed = false
-task.title = 'Terminar curso de Vuejs'
-tasks.push(task)
 
 export default {
   name: 'app',
@@ -37,14 +31,6 @@ export default {
   },
   mounted () {
     this.$events.on('newsTask', eventData => this.addTask(eventData))
-  },
-  methods: {
-    addTask (task) {
-      this.tasks.push(task)
-    },
-    broadcast (task) {
-      this.$events.emit('newTask', task)
-    }
   }
 }
 </script>
