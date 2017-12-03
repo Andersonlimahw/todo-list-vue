@@ -18,12 +18,14 @@
       <p>Cidade: {{address.cidade}}</p>
       <p>Estado: {{address.estado}}</p>
     </div>
+    <footer-todo></footer-todo>
   </section>
 </template>
 
 <script>
 import AwesomeMask from 'awesome-mask'
 import Focus from './directives/focus'
+import FooterTodo from './components/FooterTodo'
 
 export default {
   data () {
@@ -33,6 +35,9 @@ export default {
         return Object.keys(this.address).length > 0
       }
     }
+  },
+  components: {
+    FooterTodo
   },
   directives: {
     'mask': AwesomeMask,

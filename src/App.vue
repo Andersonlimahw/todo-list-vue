@@ -7,6 +7,7 @@
     <input-task @newTask="addTask"></input-task>
     <task-list v-bind:todo-list="tasks" ></task-list>
     <router-link class="cep" to="/cep" >Verificar CEP</router-link>
+    <footer-todo></footer-todo>
   </section>
 </template>
 
@@ -14,6 +15,7 @@
 import InputTask from './components/InputTask'
 import TaskList from './components/TaskList'
 import { Task } from './models/Task'
+import FooterTodo from './components/FooterTodo'
 
 let tasks = []
 let task = new Task()
@@ -25,7 +27,8 @@ export default {
   name: 'app',
   components: {
     InputTask,
-    TaskList
+    TaskList,
+    FooterTodo
   },
   data () {
     return {
@@ -38,7 +41,7 @@ export default {
   methods: {
     addTask (task) {
       this.tasks.push(task)
-    }, 
+    },
     broadcast (task) {
       this.$events.emit('newTask', task)
     }
