@@ -1,14 +1,21 @@
 <template>
-  <section class="cepChecker">
-    <label>Digite seu CEP</label>
+  <section class="cep-checker cep-checker">
+    <header class="header">
+      <h2>Digite seu CEP</h2>
+    </header>
     <input 
       type="text"
       @keyup.enter="checkCep"
+      placeholder="ex:  0800-888, pressione enter para confirmar"
       > 
       <br>
-      <small>pressione enter para pesquisar</small>
-      <br>
     <router-link class="home" to="/"> Ver Tarefas</router-link>
+    <div v-show="hasAddress()" class="address">
+      <p>Rua: {{address.logradouro}}</p>
+      <p>Bairro: {{address.bairro}}</p>
+      <p>Cidade: {{address.cidade}}</p>
+      <p>Estado: {{address.estado}}</p>
+    </div>
   </section>
 </template>
 
@@ -16,7 +23,10 @@
 export default {
   data () {
     return {
-      address: {}
+      address: {},
+      hasAddress () {
+        return Object.keys(this.address).length > 0
+      }
     }
   },
   methods: {
@@ -35,25 +45,91 @@ export default {
 </script>
 
 <style lang="less">
+.cep-checker {
+  background: #fff;
+  margin: 130px auto 40px auto;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+  0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  width:40%;
+}
+
+.cep-checker h2 {
+  position: absolute;
+  top: -30px;
+  width: 100%;
+  font-size: 50px;
+  font-weight: 100;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.35);
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+}
+
+.cep-checker input::-webkit-input-placeholder {
+  font-style: italic;
+  font-weight: 300;
+  color: #e6e6e6;
+  
+}
+
+.cep-checker input::-moz-placeholder {
+  font-style: italic;
+  font-weight: 300;
+  color: #e6e6e6;
+}
+
+
+.cep-checker{
+  /* margin: 20px 0; */
+  text-align: center;
+}
+
+.cep-checker input{
+  position: relative;
+  margin: 60px auto 10px auto;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4em;
+  border: 0;
+  color: inherit;
+  /* padding: 6px; */
+  border: 1px solid #999;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  padding: 16px 16px 16px 60px;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+
+
+.address {  
+  // text-align: left;
+  color: rgba(0, 0, 0, 0.35);
+  padding:  2em;
+  p{
+    font-size: 22px;
+  }
+}
+
 .home{
   text-decoration: none;
   font-size: 16px;
   display: block;
   padding: 5px;
   text-align: center;
+  color: #333;
 }
-.cepChecker{
-  margin: 20px 0;
-  text-align: center;
-}
-.cepChecker label{
-    display: block;
-}
-.cepChecker input{
-    margin: 20px;
-    height: 2em;
-    padding: 2px;
-}
+
+
 
 
 </style>
