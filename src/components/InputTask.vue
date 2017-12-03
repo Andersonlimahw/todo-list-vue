@@ -3,6 +3,7 @@
     <input 
       type="text" 
       class="new-todo" 
+      v-focus="true"
       placeholder="O que precisa ser feito?" 
       @keyup.enter="addTask">
   </div>
@@ -10,12 +11,16 @@
 
 <script>
 import { Task } from '../models/Task'
+import Focus from '../directives/focus'
 
 export default {
   data () {
     return {
 
     }
+  },
+  directives: {
+    'focus': Focus
   },
   methods: {
     addTask ($event) {
@@ -35,7 +40,7 @@ export default {
     },
     clearField ($el) {
       this.$el.querySelector('input').value = ''
-    },
+    }
   }
 }
 </script>

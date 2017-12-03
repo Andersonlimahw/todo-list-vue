@@ -1,11 +1,13 @@
 <template>
   <section class="cep-checker">
     <header class="header">
-      <h2>Digite seu CEP</h2>
+      <h1>Digite o CEP</h1>
     </header>
     <input 
       type="text"
       @keyup.enter="checkCep"
+      v-mask="'99999-999'"
+      v-focus="true"
       placeholder="ex:  0800-888, pressione enter para confirmar"
       > 
       <br>
@@ -20,6 +22,9 @@
 </template>
 
 <script>
+import AwesomeMask from 'awesome-mask'
+import Focus from './directives/focus'
+
 export default {
   data () {
     return {
@@ -28,6 +33,10 @@ export default {
         return Object.keys(this.address).length > 0
       }
     }
+  },
+  directives: {
+    'mask': AwesomeMask,
+    'focus': Focus
   },
   methods: {
     checkCep ($event) {
@@ -55,9 +64,9 @@ export default {
   text-align: center;
 }
 
-.cep-checker h2 {
+.cep-checker h1 {
   position: absolute;
-  top: -200px;
+  top: -220px;
   width: 100%;
   font-size: 100px;
   font-weight: 100;
